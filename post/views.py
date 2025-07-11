@@ -1,11 +1,10 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import render
 
 # Create your views here.
 
+
 def index(request):
-    return HttpResponse("Hello world!")
-
-
-
-def test(request):
-    return HttpResponse("This is from test")
+    name = "KSI"
+    return render(request, 'post/home.html', {
+        "name": name
+    })
