@@ -24,11 +24,45 @@ header nav ul li {
 }
 
 header nav ul li a {
+	cursor: pointer;
 	color: #fff;
 	text-decoration: none;
 	font-weight: bold;
 }
 
 header nav ul li a:hover {
+	text-decoration: underline;
+}
+
+footer {
+	background-color: #222;
+	/* Darker footer */
+	color: #ccc;
+	/* Light gray text */
+	padding: 20px 0;
+	text-align: center;
+}
+
+footer p {
+	margin: 5px 0;
+}
+
+footer ul {
+	list-style: none;
+	padding: 0;
+	margin: 10px 0 0;
+}
+
+footer ul li {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+footer ul li a {
+	color: #ccc;
+	text-decoration: none;
+}
+
+footer ul li a:hover {
 	text-decoration: underline;
 }

@@ -8,3 +8,9 @@ def index(request):
     return render(request, 'post/home.html', {
         "name": name
     })
+
+
+def post_detail(request, id):
+    return render(request, 'post/post_detail.html', {
+        "id": id
+    })
