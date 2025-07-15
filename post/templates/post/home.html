@@ -4,4 +4,12 @@
 
 <h1 id="unique_heading" class="heading">advance {{ name }}</h1>
 
+{% for post in posts %}
+<div>
+
+  {{ post.title }}
+  {{ post.author }}
+
+</div>
+{% endfor %}
 {% endblock %}

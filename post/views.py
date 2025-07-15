@@ -1,12 +1,12 @@
 from django.shortcuts import render
-
+from .models import Post
 # Create your views here.
 
 
 def index(request):
-    name = "KSI"
+    posts = Post.objects.all()
     return render(request, 'post/home.html', {
-        "name": name
+        'posts': posts
     })
 
 
