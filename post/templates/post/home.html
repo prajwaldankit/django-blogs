@@ -1,15 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/post/home.css' %}">
+{% endblock %}
 
 {% block main_content %}
 
-<h1 id="unique_heading" class="heading">advance {{ name }}</h1>
-
-{% for post in posts %}
-<div>
-
-  {{ post.title }}
-  {{ post.author }}
-
+<div class="post-list">
+  {% for post in posts %}
+    <div class="post-card">
+      <h2 class="post-title">{{ post.title }}</h2>
+      <p class="post-meta">
+        By {{ post.author }} | {{ post.created_at|date:"F d, Y" }} | Category: {{ post.category.name }}
+      </p>
+      <div class="post-content">
+        {{ post.content|truncatewords:30 }}
+        <a href="{% url 'post_detail' post.pk %}" class="read-more">Read more →</a>
+      </div>
+    </div>
+  {% empty %}
+    <p>No posts found.</p>
+  {% endfor %}
 </div>
-{% endfor %}
+
 {% endblock %}
+

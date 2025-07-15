@@ -1,7 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/category/home.css' %}">
+{% endblock %}
 
 {% block main_content %}
 
-<h1 id="unique_heading" class="heading">THis is from catorgy home page {{ name }}</h1>
+<h1 class="heading">All Categories</h1>
+
+<div class="category-list">
+  {% for category in categories %}
+    <div class="category-card">
+      <a href="#" class="category-link">
+        {{ category.name }}
+      </a>
+    </div>
+  {% empty %}
+    <p>No categories found.</p>
+  {% endfor %}
+</div>
 
 {% endblock %}
