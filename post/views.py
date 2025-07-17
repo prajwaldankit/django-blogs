@@ -4,7 +4,7 @@ from .models import Post
 
 
 def index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().select_related('category')
     return render(request, 'post/home.html', {
         'posts': posts
     })
