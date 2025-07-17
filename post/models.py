@@ -1,6 +1,6 @@
 from django.db import models
 from category.models import Category
-from django.utils.text import slugify
+from utils.slug import generate_unique_slug
 
 # Create your models here.
 
@@ -17,13 +17,8 @@ class Post(models.Model):
         db_table = 'posts'
 
     def save(self, *args, **kwargs):
-        base_slug = slugify(self.title)
-        slug = base_slug
-        counter = 1
-        while Post.objects.filter(slug=slug).exclude(pk=self.pk).exists():
-            slug = f"{base_slug}-{counter}"
-            counter += 1
-        self.slug = slug
+        if not self.pk or Post.objects.get(pk=self.pk).title != self.title:
+            self.slug = generate_unique_slug(Post, self.title)
         super().save(*args, **kwargs)
 
     def __str__(self):
