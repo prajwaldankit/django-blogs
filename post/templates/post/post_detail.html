@@ -1,7 +1,31 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/post/post_details.css' %}">
+{% endblock %}
+
 
 {% block main_content %}
+<div class="post-container">
 
-<h1 id="unique_heading" class="heading">advance {{ id }}</h1>
+  <h1 class="post-title">{{ post.title }}</h1>
 
+  <div class="post-meta">
+    <span class="author">By: {{ post.author }}</span> |
+    <span class="date">Published: {{ post.created_at|date:"F d, Y" }}</span> |
+    <span class="category">
+      Category: 
+	<a href="{% url 'category_by_slug' post.category.slug %}">
+        {{ post.category.name }}
+      </a>
+    </span>
+  </div>
+
+  <div class="post-content">
+    <p>{{ post.content }}</p>
+  </div>
+
+</div>
 {% endblock %}
+

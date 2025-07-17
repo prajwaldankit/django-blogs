@@ -11,4 +11,4 @@ class Category(models.Model):
         db_table = 'categories'
 
     def __str__(self):
-        return self.pk
+        return self.name

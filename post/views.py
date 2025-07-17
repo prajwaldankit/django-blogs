@@ -10,7 +10,17 @@ def index(request):
     })
 
 
-def post_detail(request, id):
+def post_detail_by_id(request, id):
+    post = Post.objects.select_related('category').get(pk=id)
     return render(request, 'post/post_detail.html', {
-        "id": id
+        "id": id,
+        "post": post
+    })
+
+
+def post_detail_by_slug(request, slug):
+    post = Post.objects.select_related('category').get(slug=slug)
+    return render(request, 'post/post_detail.html', {
+        "id": post.pk,
+        "post": post
     })

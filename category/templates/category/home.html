@@ -12,7 +12,7 @@
 <div class="category-list">
   {% for category in categories %}
     <div class="category-card">
-      <a href="#" class="category-link">
+      <a href="{% url 'category_by_slug' category.slug %}" class="category-link">
         {{ category.name }}
       </a>
     </div>

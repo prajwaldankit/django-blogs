@@ -9,7 +9,7 @@ class Post(models.Model):
     author = models.CharField(max_length=128)
     content = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=256)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

@@ -12,11 +12,11 @@
       <div class="post-card">
 	<h2 class="post-title">{{ post.title }}</h2>
 	<p class="post-meta">
-	  By {{ post.author }} | {{ post.created_at|date:"F d, Y" }} | Category: {{ post.category.pk }}
+	  By {{ post.author }} | {{ post.created_at|date:"F d, Y" }} | Category: {{ post.category.name }}
 	</p>
 	<div class="post-content">
 	  {{ post.content|truncatewords:30 }}
-	  <a href="{% url 'post_detail' post.pk %}" class="read-more">Read more →</a>
+	  <a href="{% url 'post_by_slug' post.slug %}" class="read-more">Read more →</a>
 	</div>
       </div>
     {% empty %}
