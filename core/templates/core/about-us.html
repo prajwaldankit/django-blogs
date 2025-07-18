@@ -1,27 +1,9 @@
 {% extends 'base.html' %}
 
 {% block main_content %}
-  <h1 id="contact_heading" class="heading">Contact Me</h1>
-  <p>Got a question, suggestion, or just want to say hi? I’d love to hear from you.</p>
-  
-  <ul>
-    <li>Email: <a href="mailto:me@example.com" target="_blank">me@example.com</a></li>
-    <li>Twitter: <a href="https://twitter.com/yourhandle" target="_blank">@yourhandle</a></li>
-    <li>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">Your LinkedIn</a></li>
-  </ul>
-
-  <h2>Contact Form</h2>
-  <form action="" method="post">
-    {% csrf_token %}
-    <label for="id_name">Name:</label><br>
-    <input type="text" id="id_name" name="name"><br><br>
-
-    <label for="id_email">Email:</label><br>
-    <input type="email" id="id_email" name="email"><br><br>
-
-    <label for="id_message">Message:</label><br>
-    <textarea id="id_message" name="message"></textarea><br><br>
-
-    <button type="submit">Send</button>
-  </form>
+  <h1 id="about_heading" class="heading">About This Blog</h1>
+  <p>Welcome to <strong>My Awesome Blog</strong>!</p>
+  <p>Here, I write about my thoughts, tutorials, and stories on topics like Django, web development, and tech.</p>
+  <p>Started in 2025, this blog is a place to share knowledge and connect with readers like you.</p>
+  <p>Thanks for visiting!</p>
 {% endblock %}

@@ -4,7 +4,7 @@ from .models import Category
 
 # @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    exclude = ('slug',)
+    # exclude = ('slug',)
     readonly_fields = ('slug',)
 
 
