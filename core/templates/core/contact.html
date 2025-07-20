@@ -3,15 +3,8 @@
 {% block main_content %}
   <h1 id="contact_heading" class="heading">Contact Me</h1>
   <p>Got a question, suggestion, or just want to say hi? I’d love to hear from you.</p>
-  
-  <ul>
-    <li>Email: <a href="mailto:me@example.com" target="_blank">me@example.com</a></li>
-    <li>Twitter: <a href="https://twitter.com/yourhandle" target="_blank">@yourhandle</a></li>
-    <li>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">Your LinkedIn</a></li>
-  </ul>
-
-  <h2>Contact Form</h2>
-  <form action="" method="post">
+   <h2>Contact Form</h2>
+  <form method="post" action='/contact/'>
     {% csrf_token %}
     <label for="id_name">Name:</label><br>
     <input type="text" id="id_name" name="name"><br><br>

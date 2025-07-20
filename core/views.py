@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from core.models import Feedback
 
 # Create your views here.
 
@@ -11,6 +12,17 @@ def index(request):
 
 
 def contact(request):
+    if (request.method == "POST"):
+        name = request.POST.get('name')
+        email = request.POST['email']
+        message = request.POST['message']
+        feedback = Feedback(
+            name=name,
+            email=email,
+            message=message
+        )
+        feedback.save()
+        return redirect("homepage")
     return render(request, 'core/contact.html')
 
 
