@@ -1,5 +1,7 @@
+from django.views.generic import DetailView
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Comment
+from .forms import CommentForm
 # Create your views here.
 
 
@@ -24,3 +26,18 @@ def post_detail_by_slug(request, slug):
         "id": post.pk,
         "post": post
     })
+
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'post/post_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CommentForm()
+        context['comments'] = Comment.objects.filter(post=self.object)
+        return context
+
+    def post(self, request, *args, **kwargs):
+        # TODO: implement saving comments.
+        return None
