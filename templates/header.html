@@ -6,6 +6,18 @@
 			<li><a href="{% url 'about_us' %}"> About us </a></li>
 			<li><a href="{% url 'contact' %}"> Contact </a></li>
 			<li><a href="#"> Login </a></li>
+
+			{% if user.is_authenticated %}
+
+			<form method="post" action="{% url 'logout' %}">
+				<p>Welcome, {{ user.username }} |
+					{% csrf_token %}
+					<button type="submit">Log Out</button>
+			</form>
+			</p>
+			{% else %}
+			<p><a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a></p>
+			{% endif %}
 		</ul>
 	</nav>
 </header>
