@@ -5,7 +5,7 @@
 <form method="POST">
 	{% csrf_token %}
 	{{ form.errors }}
-	{{ from.mon_field_errors }}
+	{{ from.non_field_errors }}
 	{{ form.as_p }}
 	<button type="submit">Register</button>
 </form>

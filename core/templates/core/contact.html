@@ -1,20 +1,11 @@
 {% extends 'base.html' %}
 
 {% block main_content %}
-  <h1 id="contact_heading" class="heading">Contact Me</h1>
-  <p>Got a question, suggestion, or just want to say hi? I’d love to hear from you.</p>
-   <h2>Contact Form</h2>
-  <form method="post" action='/contact/'>
-    {% csrf_token %}
-    <label for="id_name">Name:</label><br>
-    <input type="text" id="id_name" name="name"><br><br>
-
-    <label for="id_email">Email:</label><br>
-    <input type="email" id="id_email" name="email"><br><br>
-
-    <label for="id_message">Message:</label><br>
-    <textarea id="id_message" name="message"></textarea><br><br>
-
-    <button type="submit">Send</button>
-  </form>
+<h1 id="contact_heading" class="heading">Contact Me</h1>
+<p>Got a question, suggestion, or just want to say hi? I’d love to hear from you.</p>
+<h2>Contact Form</h2>
+<form method="post" action='/contact/'>
+	{% csrf_token %}
+	{{ form.as_p }}
+</form>
 {% endblock %}
