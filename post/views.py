@@ -1,4 +1,4 @@
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.shortcuts import render, redirect
@@ -30,7 +30,7 @@ def post_detail_by_slug(request, slug):
     })
 
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = 'post/post_detail.html'
 
