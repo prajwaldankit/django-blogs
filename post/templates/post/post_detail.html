@@ -8,12 +8,12 @@
 
 {% block main_content %}
 <div class="post-container">
-
 	<h1 class="post-title">{{ post.title }}</h1>
-
 	<div class="post-meta">
-		<span class="author">By: {{ post.author }}</span> |
-		<span class="date">Published: {{ post.created_at|date:"F d, Y" }}</span> |
+		<span class="author">By: {{ post.author }}</span>
+		|
+		<span class="date">Published: {{ post.created_at|date:"F d, Y" }}</span>
+		|
 		<span class="category">
 			Category:
 			<a href="{% url 'category_by_slug' post.category.slug %}">
@@ -21,16 +21,37 @@
 			</a>
 		</span>
 	</div>
-
 	<div class="post-content">
 		<p>{{ post.content }}</p>
 	</div>
-
 </div>
 <div>
-	<form action="something" method="post">
+	{% if user.is_authenticated %}
+	<form method="post">
+		{% csrf_token %}
 		{{ form }}
 		<button type="submit">Comment</button>
 	</form>
+	{% else %}
+	<p>Please <a href="{% url 'register' %}">Register</a> or <a href="{% url 'login' %}">Login</a> to comment.</p>
+	{% endif %}
+	<div>
+		<h3>Comments {{ comments.count }} </h3>
+		{% for comment in comments %}
+		<div>
+			<p><strong>{{ comment.user }}</strong>: {{ comment.content }}</p>
+			<small>{{ comment.created_at }}</small>
+
+			{% if user == comment.user %}
+			<a href="{% url 'comment_edit' comment.pk %}">Edit</a>
+			<a href="{% url 'comment_delete' comment.pk %}">Delete</a>
+			{% elif user.is_superuser %}
+			<a href="{% url 'comment_delete' comment.pk %}">Delete</a>
+			{% endif %}
+		</div>
+		<hr> {% empty %}
+		<p>No comments yet! Be the first </p>
+		{% endfor %}
+	</div>
 </div>
 {% endblock %}
