@@ -178,4 +178,5 @@ COMPONENTS = ComponentsSettings(
     dirs=[
         Path(BASE_DIR) / "components",
     ],
+    reload_on_file_change=True
 )
