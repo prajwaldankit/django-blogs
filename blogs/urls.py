@@ -23,4 +23,5 @@ urlpatterns = [
     path('posts/', include("post.urls")),
     path('category/', include("category.urls")),
     path('admin/', admin.site.urls),
+    path("", include("django_components.urls")),
 ]
