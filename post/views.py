@@ -68,6 +68,12 @@ class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == self.get_object().user
 
 
+def view_reported_posts(request):
+    if not request.user.is_superuser:
+        redirect('homepage')
+    render('hh')
+
+
 class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Comment
     template_name = 'post/delete_comment.html'
