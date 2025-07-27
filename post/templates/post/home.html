@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load component_tags %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'css/post/home.css' %}">
@@ -9,16 +10,7 @@
   
   <div class="post-list">
     {% for post in posts %}
-      <div class="post-card">
-	<h2 class="text-3xl ">{{ post.title }}</h2>
-	<p class="text-gray-400 text-xs">
-	  By {{ post.author }} | {{ post.created_at|date:"F d, Y" }} | Category: {{ post.category.name }}
-	</p>
-	<div class="post-content">
-	  {{ post.content|truncatewords:30 }}
-	  <a href="{% url 'post_by_slug' post.slug %}" class="read-more">Read more →</a>
-	</div>
-      </div>
+    {% component "post_card" post=post %} {% endcomponent %}
     {% empty %}
       <p>No posts found.</p>
     {% endfor %}
