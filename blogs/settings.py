@@ -55,13 +55,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Tailwind
+    'tailwind',
+    'theme',
+    # 3rd party libs
+    'rest_framework',
     'django_components',
+    # created apps
     'core',
     'post',
     'category',
@@ -180,3 +187,6 @@ COMPONENTS = ComponentsSettings(
     ],
     reload_on_file_change=True
 )
+
+# For tailwind dependencies
+TAILWIND_APP_NAME = 'theme'
