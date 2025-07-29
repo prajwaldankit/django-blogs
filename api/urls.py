@@ -1,8 +1,11 @@
 from django.urls import path
+from rest_framework.authtoken import views as drf_views
 from . import views
+
 
 urlpatterns = [
     path('', views.api_index, name="api_home"),
+    path('token/', drf_views.obtain_auth_token, name="get_token"),
     path('posts/', views.ListPosts.as_view(), name="posts_get_api"),
     path('posts/<slug:slug>/', views.PostDetail.as_view(),
          name='post_by_slug_api'),

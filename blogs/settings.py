@@ -49,7 +49,9 @@ DEBUG = True
 # }
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "*"
+]
 
 
 # Application definition
@@ -67,6 +69,7 @@ INSTALLED_APPS = [
     'theme',
     # 3rd party libs
     'rest_framework',
+    'rest_framework.authtoken',
     'django_components',
     # created apps
     'core',
@@ -187,6 +190,13 @@ COMPONENTS = ComponentsSettings(
     ],
     reload_on_file_change=True
 )
+
+# For rest framework drf
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 # For tailwind dependencies
 TAILWIND_APP_NAME = 'theme'

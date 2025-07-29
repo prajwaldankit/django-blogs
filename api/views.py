@@ -4,12 +4,12 @@ from post.models import Post, Comment
 from post.serializer import PostSerialzer, CommentSerializer
 from rest_framework.views import APIView
 from rest_framework import status
-# from rest_framework import authentication, permissions
+from rest_framework import authentication, permissions
 
 
 class ListPosts(APIView):
-    # authentication_classes = [authentication.TokenAuthentication]
-    # permission_classes = [permissions.IsAdminUser]
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, format=None):
         posts = Post.objects.all().select_related('category')
